@@ -30,5 +30,8 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Claude Code local settings (user-specific, not for sharing)
+.claude/settings.local.json
+
 # Optional: TypeScript build info
 *.tsbuildinfo
