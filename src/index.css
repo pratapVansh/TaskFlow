@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   Base
+───────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-slate-800;
+    background-color: #f8fafc;
+    /* Subtle indigo aurora at the very top */
+    background-image: radial-gradient(
+      ellipse 90% 55% at 50% -8%,
+      rgba(99, 102, 241, 0.08) 0%,
+      transparent 100%
+    );
+    min-height: 100vh;
+  }
+
+  * { @apply box-border; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Reusable component classes
+   (used by TaskForm + EditTaskModal so styles stay in sync)
+───────────────────────────────────────────────────────────── */
+@layer components {
+  /* Standard text field / textarea */
+  .field-input {
+    @apply w-full px-4 py-3 border border-slate-200 rounded-xl
+           text-sm text-slate-900 placeholder-slate-400 bg-white
+           transition-all duration-150
+           focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-400;
+  }
+
+  /* Layered on top of .field-input when validation fails */
+  .field-input-error {
+    @apply border-rose-400 bg-rose-50/50
+           focus:ring-rose-500/10 focus:border-rose-400;
+  }
+
+  /* Form field label */
+  .field-label {
+    @apply block text-[11px] font-semibold uppercase tracking-widest text-slate-400;
+  }
+
+  /* Inline validation message */
+  .field-error {
+    @apply mt-1.5 flex items-center gap-1 text-[11px] text-rose-500 font-medium;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Utilities
+───────────────────────────────────────────────────────────── */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar       { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 99px;
+  }
+}
